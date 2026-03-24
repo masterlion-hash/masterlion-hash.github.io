@@ -72,6 +72,8 @@ nav ul a {
   transition: all 0.2s;
 }
 nav ul a:hover { color: var(--accent); background: var(--accent-light); opacity:1; }
+nav ul a.active { color: var(--accent); background: var(--accent-light); }
+nav .logo { cursor: pointer; }
 .mobile-menu { display: none; background: none; border: none; color: var(--text); font-size: 1.5rem; cursor: pointer; }
 
 /* HERO */
@@ -249,6 +251,16 @@ nav ul a:hover { color: var(--accent); background: var(--accent-light); opacity:
   display: inline-flex; align-items: center; gap: 0.35rem;
   margin-top: 1rem; font-size: 0.82rem; font-weight: 600; color: var(--accent);
 }
+.card-image {
+  width: 100%; height: 170px; object-fit: cover;
+  border-radius: 10px; margin-bottom: 1rem; display: block;
+  border: 1px solid var(--border);
+}
+.featured-header-image {
+  width: 100%; max-height: 260px; object-fit: cover;
+  border-radius: 10px; margin: 1rem 0; display: block;
+  border: 1px solid var(--border);
+}
 
 /* PUBLISHED PROJECT (full-width expanded card) */
 .published-card {
@@ -272,16 +284,13 @@ nav ul a:hover { color: var(--accent); background: var(--accent-light); opacity:
   display: grid; grid-template-columns: 1fr 1fr; gap: 1.75rem; margin-top: 1.75rem;
 }
 .published-graphics {
-  border: 2px dashed var(--border); border-radius: var(--radius);
-  min-height: 220px; display: flex; flex-direction: column;
-  align-items: center; justify-content: center; gap: 0.6rem;
-  background: var(--bg); color: var(--text-dim); text-align: center; padding: 1.5rem;
-  transition: border-color 0.2s;
+  border-radius: var(--radius); overflow: hidden;
+  background: var(--bg); min-height: 220px;
 }
-.published-graphics:hover { border-color: var(--accent); }
-.published-graphics .upload-icon { font-size: 2rem; opacity: 0.4; }
-.published-graphics p { font-size: 0.82rem; line-height: 1.5; }
-.published-graphics span { font-size: 0.72rem; color: var(--accent); font-weight: 600; }
+.published-graphics img {
+  width: 100%; height: 100%; min-height: 220px; object-fit: cover; display: block;
+  border: 2px solid var(--border); border-radius: var(--radius);
+}
 .published-findings { }
 .published-findings h4 {
   font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
@@ -480,17 +489,20 @@ footer {
 <body>
 
 <nav>
-  <div class="logo">noah<span>.</span>shumba</div>
+  <div class="logo" onclick="switchSection('home')">noah<span>.</span>shumba</div>
   <button class="mobile-menu" onclick="document.querySelector('nav ul').classList.toggle('open')">&#9776;</button>
   <ul>
-    <li><a href="#" onclick="switchTab('projects');return false;">Projects</a></li>
-    <li><a href="#" onclick="switchTab('skills');return false;">Skills</a></li>
-    <li><a href="#" onclick="switchTab('experience');return false;">Experience</a></li>
-    <li><a href="#" onclick="switchTab('publications');return false;">Research</a></li>
-    <li><a href="#" onclick="switchTab('contact');return false;">Contact</a></li>
+    <li><a href="#" class="nav-link active" onclick="switchSection('home');return false;">Home</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('projects');return false;">Projects</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('skills');return false;">Skills</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('experience');return false;">Experience</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('education');return false;">Education</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('publications');return false;">Research</a></li>
+    <li><a href="#" class="nav-link" onclick="switchSection('contact');return false;">Contact</a></li>
   </ul>
 </nav>
 
+<div id="home-view">
 <header class="hero">
   <div class="hero-glow"></div>
   <div class="hero-glow-2"></div>
@@ -505,7 +517,7 @@ footer {
     I design, build, and deploy AI-powered applications for social impact — from LLM pipelines and agentic systems to full-stack tools for digital identity, cybersecurity, and public policy across Africa.
   </p>
   <div class="hero-links">
-    <a href="#" onclick="switchTab('projects');return false;" class="btn-primary">View Projects &#8595;</a>
+    <a href="#" onclick="switchSection('projects');return false;" class="btn-primary">View Projects &#8595;</a>
     <a href="https://github.com/masterlion-hash" target="_blank" class="btn-outline">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
       GitHub
@@ -528,20 +540,12 @@ footer {
   <h2>Passionate about AI for Global Development</h2>
   <p>My work sits at the intersection of AI engineering, cybersecurity, and social impact — building tools that help governments, NGOs, and communities across Africa leverage technology to solve real problems.</p>
 </div>
+</div><!-- end home-view -->
 
-<!-- TABBED SECTIONS -->
-<div class="tabs-wrapper">
-  <div class="tabs-nav">
-    <button class="tab-btn active" onclick="switchTab('projects')">&#128187; Projects</button>
-    <button class="tab-btn" onclick="switchTab('skills')">&#9889; Skills</button>
-    <button class="tab-btn" onclick="switchTab('experience')">&#128188; Experience</button>
-    <button class="tab-btn" onclick="switchTab('education')">&#127979; Education</button>
-    <button class="tab-btn" onclick="switchTab('publications')">&#128218; Research</button>
-    <button class="tab-btn" onclick="switchTab('contact')">&#9993; Contact</button>
-  </div>
-
+<!-- SECTION CONTENT -->
+<div class="tabs-wrapper" id="tabs-wrapper" style="display:none">
   <!-- PROJECTS -->
-  <div class="tab-panel active" id="tab-projects">
+  <div class="tab-panel" id="tab-projects">
     <div class="section-label">// Featured Work</div>
     <h2 class="section-title">Projects</h2>
     <p class="section-desc">End-to-end AI applications — from problem scoping to deployment — across security, climate, and applied ML research.</p>
@@ -572,6 +576,7 @@ footer {
       </div>
 
       <div class="project-card card-warm" data-folder="ai">
+        <img class="card-image" src="assets/teaching-assistant.png" alt="Teaching Assistant Bot">
         <div class="card-icon">&#127979;</div>
         <h3>Teaching Assistant Bot</h3>
         <p class="card-desc">Browser extension + RAG backend helping students get AI-powered answers grounded in course materials. ChromaDB for knowledge retrieval, supports multiple LLM providers.</p>
@@ -587,6 +592,7 @@ footer {
 
       <!-- Cybersecurity folder -->
       <div class="project-card card-blue" data-folder="security">
+        <img class="card-image" src="assets/ML-SOC.png" alt="ML for SOC dashboard">
         <div class="card-icon">&#128737;</div>
         <h3>ML for SOC — Anomaly Detection</h3>
         <p class="card-desc">Machine learning pipeline integrated with Elasticsearch/Kibana for Security Operations Center. Processes logs from honeypots and production hosts, generates alerts via trained ML jobs.</p>
@@ -598,6 +604,7 @@ footer {
         <div class="featured-inner">
           <div class="featured-badge">&#128272; Flagship Security Project</div>
           <h3>SOC Agent — Autonomous Security Investigation System</h3>
+          <img class="featured-header-image" src="assets/soc-agent.png" alt="SOC Agent architecture">
           <p class="card-desc">
             An agentic AI system that autonomously investigates security alerts from an Elasticsearch-based SIEM. The agent polls anomaly alerts generated by ML jobs, then runs a multi-phase investigation pipeline: scoring correlations, querying logs for evidence, analyzing findings with an LLM (Ollama), and producing a final verdict with severity classification. Features a Think&rarr;Act&rarr;Observe reasoning loop, safety-gated response tiers (from logging to containment), and a WhatsApp integration (OpenClaw) that delivers real-time alerts to SOC analysts for approve/reject decisions.
           </p>
@@ -685,9 +692,7 @@ footer {
           <div class="card-tags" style="margin-top:0.75rem;"><span class="tag">Climate AI</span><span class="tag">Data Science</span><span class="tag">Africa</span><span class="tag">NeurIPS</span></div>
           <div class="published-body">
             <div class="published-graphics">
-              <div class="upload-icon">&#128444;</div>
-              <p><strong>Add Graphics</strong><br>Charts, figures, maps or visualizations from the paper</p>
-              <span>Drop images here or click to upload</span>
+              <img src="assets/Water_Efficiency.jpg" alt="Water Efficiency for African Electricity — figure">
             </div>
             <div class="published-findings">
               <h4>&#128270; Key Findings</h4>
@@ -705,9 +710,7 @@ footer {
           <div class="card-tags" style="margin-top:0.75rem;"><span class="tag">LLM</span><span class="tag">NLP</span><span class="tag">Africa</span><span class="tag">ACM</span></div>
           <div class="published-body">
             <div class="published-graphics">
-              <div class="upload-icon">&#128444;</div>
-              <p><strong>Add Graphics</strong><br>Charts, figures, maps or visualizations from the paper</p>
-              <span>Drop images here or click to upload</span>
+              <img src="assets/Datacenter_Cycle.png" alt="LLM Classification — figure">
             </div>
             <div class="published-findings">
               <h4>&#128270; Key Findings</h4>
@@ -869,34 +872,39 @@ footer {
 </footer>
 
 <script>
-function switchTab(name) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+function switchSection(name) {
+  var homeView = document.getElementById('home-view');
+  var tabsWrapper = document.getElementById('tabs-wrapper');
 
+  // update nav active state
+  document.querySelectorAll('.nav-link').forEach(function(a) {
+    var fn = a.getAttribute('onclick') || '';
+    a.classList.toggle('active', fn.indexOf("'" + name + "'") !== -1);
+  });
+
+  if (name === 'home') {
+    homeView.style.display = '';
+    tabsWrapper.style.display = 'none';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    return;
+  }
+
+  homeView.style.display = 'none';
+  tabsWrapper.style.display = '';
+
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   var panel = document.getElementById('tab-' + name);
   if (panel) panel.classList.add('active');
 
-  document.querySelectorAll('.tab-btn').forEach(function(btn) {
-    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').indexOf("'" + name + "'") !== -1) {
-      btn.classList.add('active');
-    }
-  });
-
-  document.querySelector('.tabs-wrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 function filterFolder(folder, btn) {
-  // update active button
   document.querySelectorAll('.folder-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
 
-  // show/hide cards
   document.querySelectorAll('#projects-grid [data-folder]').forEach(function(card) {
-    if (folder === 'all' || card.dataset.folder === folder) {
-      card.style.display = '';
-    } else {
-      card.style.display = 'none';
-    }
+    card.style.display = (folder === 'all' || card.dataset.folder === folder) ? '' : 'none';
   });
 }
 </script>
