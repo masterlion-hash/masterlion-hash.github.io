@@ -530,7 +530,7 @@ footer {
   </div>
   <div class="hero-stats">
     <div><div class="stat-num">20+</div><div class="stat-label">Projects Shipped</div></div>
-    <div><div class="stat-num">2</div><div class="stat-label">Publications</div></div>
+    <div><div class="stat-num">1</div><div class="stat-label">Publication</div></div>
     <div><div class="stat-num">CMU</div><div class="stat-label">MS in AI</div></div>
     <div><div class="stat-num">5+</div><div class="stat-label">Countries Impacted</div></div>
   </div>
@@ -552,10 +552,10 @@ footer {
 
     <!-- Folder navigation -->
     <div class="folders-nav">
-      <button class="folder-btn active" onclick="filterFolder('all', this)">&#128193; All <span class="folder-count">8</span></button>
+      <button class="folder-btn active" onclick="filterFolder('all', this)">&#128193; All <span class="folder-count">7</span></button>
       <button class="folder-btn" onclick="filterFolder('ai', this)">&#129302; AI &amp; LLM <span class="folder-count">4</span></button>
       <button class="folder-btn" onclick="filterFolder('security', this)">&#128737; Cybersecurity <span class="folder-count">2</span></button>
-      <button class="folder-btn" onclick="filterFolder('published', this)">&#127942; Published Research <span class="folder-count">2</span></button>
+      <button class="folder-btn" onclick="filterFolder('published', this)">&#127942; Published Research <span class="folder-count">1</span></button>
     </div>
 
     <div class="projects-grid" id="projects-grid">
@@ -683,7 +683,7 @@ footer {
         </div>
       </div>
 
-      <!-- Published Research folder (full-width expanded cards) -->
+      <!-- Published Research folder (full-width expanded card) -->
       <div class="published-card" data-folder="published">
         <div class="published-inner">
           <div class="published-badge">&#127942; NeurIPS 2024 · Tackling Climate Change with ML</div>
@@ -691,26 +691,9 @@ footer {
           <p class="card-desc">Novel methodology estimating water efficiency for electricity generation across 41 African countries. Mentors: Prof. Giulia Fanti (CMU), Prof. Shaolei Ren (UCR).</p>
           <div class="card-tags" style="margin-top:0.75rem;"><span class="tag">Climate AI</span><span class="tag">Data Science</span><span class="tag">Africa</span><span class="tag">NeurIPS</span></div>
           <div class="published-body">
-            <div class="published-graphics">
-              <img src="assets/Water_Efficiency.jpg" alt="Water Efficiency for African Electricity — figure">
-            </div>
-            <div class="published-findings">
-              <h4>&#128270; Key Findings</h4>
-              <div class="findings-placeholder">Add your key findings and observations here — what did the research reveal?</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="published-card" data-folder="published">
-        <div class="published-inner">
-          <div class="published-badge">&#127942; ACM COMPASS 2025</div>
-          <h3>LLM-Based Classification &amp; Analysis Tools</h3>
-          <p class="card-desc">Research on applying large language models to classification and analysis tasks in resource-constrained African contexts.</p>
-          <div class="card-tags" style="margin-top:0.75rem;"><span class="tag">LLM</span><span class="tag">NLP</span><span class="tag">Africa</span><span class="tag">ACM</span></div>
-          <div class="published-body">
-            <div class="published-graphics">
-              <img src="assets/Datacenter_Cycle.png" alt="LLM Classification — figure">
+            <div class="published-graphics" style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;padding:0;border:none;background:none;">
+              <img src="assets/Water_Efficiency.jpg" alt="Water efficiency figure" style="width:100%;height:200px;object-fit:cover;border-radius:10px;border:2px solid var(--border);">
+              <img src="assets/Datacenter_Cycle.png" alt="Datacenter water cycle figure" style="width:100%;height:200px;object-fit:cover;border-radius:10px;border:2px solid var(--border);">
             </div>
             <div class="published-findings">
               <h4>&#128270; Key Findings</h4>
@@ -828,11 +811,6 @@ footer {
       <div class="pub-venue">NeurIPS 2024 &middot; Tackling Climate Change with ML Workshop</div>
       <h3>Water Efficiency Dataset Generation for African Countries</h3>
       <p>Novel methodology to estimate water efficiency for electricity generation across 41 African countries. Mentors: Prof. Giulia Fanti (CMU), Prof. Shaolei Ren (UCR).</p>
-    </div>
-    <div class="pub-card">
-      <div class="pub-venue">ACM COMPASS 2025</div>
-      <h3>LLM-Based Classification &amp; Analysis Tools</h3>
-      <p>Research on applying large language models to classification and analysis tasks in resource-constrained African contexts.</p>
     </div>
   </div>
 
